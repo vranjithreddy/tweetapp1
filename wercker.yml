@@ -70,10 +70,6 @@
          code: |
            ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker rmi ranjithraj2035/tweetapp1:current || echo ‘failed to remove image behind stopped container’
      - script:
-         name: Tag the pulled image
-         code: |
-           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker tag ranjithraj2035/tweetapp1:latest ranjithraj2035/tweetapp1:current
-     - script:
          name: Start all services/containers
          code: |
            ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker container run --detach -p 33:80 --name ranjith-tweet ranjithraj2035/tweetapp1:current
