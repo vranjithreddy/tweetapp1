@@ -1,6 +1,6 @@
 # This references the default nginx container from
-# the  Docker Hub: https://r egistry.hub.docker.com/ 
-# made change  
+# the  Docker Hub: https://registry.hub.docker.com/ 
+# made asdf
  box: nginx:latest
  
  build:
@@ -50,7 +50,7 @@
    box: node:latest
    steps:
      - wercker/add-ssh-key:
-         keyname: tweet
+         keyname: ranjith_tweet
      - add-to-known_hosts:
          hostname: $DEV_REMOTE_HOST
      - script:
@@ -60,17 +60,20 @@
      - script:
          name: Stop all running containers
          code: |
-           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker stop ranjith-tweet  || echo ‘failed to stop running container’
+           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker stop ranjith-kube  || echo ‘failed to stop running container’
      - script:
          name: Remove stopped service/containers
          code: |
-           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker rm ranjith-tweet  || echo ‘failed to remove stopped container’
+           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker rm ranjith-kube  || echo ‘failed to remove stopped container’
      - script:
          name: Remove image behind stopped container
          code: |
-           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker rmi ranjithraj2035/tweetaaa:current || echo ‘failed to remove image behind stopped container’
+           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker rmi ranjithraj2035/kube-doc-rep:current || echo ‘failed to remove image behind stopped container’
+     - script:
+         name: Tag the pulled image
+         code: |
+           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker tag ranjithraj2035/tweetaaa:latest ranjithraj2035/tweetaaa:current
      - script:
          name: Start all services/containers
          code: |
-           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker container run --detach -p 33:80 --name ranjith-tweet ranjithraj2035/tweetaaa:current
-
+           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker container run --detach -p 33:80 --name ranjith-kube ranjithraj2035/tweetaaa:current
