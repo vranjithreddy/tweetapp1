@@ -21,7 +21,7 @@
      - slack-notifier:
          url: $SLACK_URL
          username: ranjithraj2035
-         channel: random
+         channel: 
  push-2-docker:
    box: nginx:latest
    
@@ -41,7 +41,7 @@
          password: $DOCKER_PASSWORD
          # we want to push both the release image and as the latest
          tag: dev-$WERCKER_GIT_COMMIT latest
-         repository: ranjithraj2035/tweetapp1
+         repository: ranjithraj2035/tweetaaa
          registry: https://hub.docker.com
          ports: 80 443
          cmd: nginx -g 'daemon off';
@@ -50,7 +50,7 @@
    box: node:latest
    steps:
      - wercker/add-ssh-key:
-         keyname: tweetapp1
+         keyname: tweet
      - add-to-known_hosts:
          hostname: $DEV_REMOTE_HOST
      - script:
