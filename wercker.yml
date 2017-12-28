@@ -56,7 +56,7 @@
      - script:
          name: Pull newest docker images
          code: |
-           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker pull ranjithraj2035/kube-doc-rep
+           ssh $DEV_REMOTE_USER@$DEV_REMOTE_HOST sudo docker pull ranjithraj2035/tweetaaa
      - script:
          name: Stop all running containers
          code: |
