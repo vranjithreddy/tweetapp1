@@ -1,5 +1,5 @@
 # This references the default nginx container from
-# the  Docker Hub: https://registry.hub.docker.com/ 
+# the  Docker Hub: https://r egistry.hub.docker.com/ 
 # made change 
  box: nginx:latest
  
