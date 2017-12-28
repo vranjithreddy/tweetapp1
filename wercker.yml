@@ -1,6 +1,6 @@
 # This references the default nginx container from
 # the  Docker Hub: https://registry.hub.docker.com/ 
-# made chan
+# made changes
  box: nginx:latest
  
  build:
